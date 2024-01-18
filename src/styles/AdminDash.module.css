@@ -1,0 +1,122 @@
+.inside_home {
+  max-height: 80vh;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.form .input_box {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 6px;
+}
+.form .input_box label {
+  font-size: 16px;
+  font-weight: 400;
+}
+.form .input_box input {
+  height: 40px;
+  width: 120%;
+  outline: none;
+  padding: 0 15px;
+  border: none;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  color: #333;
+  font-size: 14px;
+  font-weight: 400;
+}
+.form .input_box textarea {
+  height: 180px;
+  width: 120%;
+  outline: none;
+  padding: 12px 15px;
+  border: none;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  color: #333;
+  font-size: 14px;
+  font-weight: 400;
+}
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 20px;
+}
+.button button {
+  height: 40px;
+  width: 50%;
+  margin: 0 4px;
+  outline: none;
+  border: 2px #aaa solid;
+  border-radius: 10px;
+  background-color: transparent;
+  font-weight: 700;
+  transition: all 0.4s ease;
+  font-size: 12px;
+}
+.button button:hover {
+  background-color: rgb(186, 184, 184);
+  border: none;
+  color: #fff;
+}
+.selections {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3px;
+}
+
+.input {
+  height: 40px;
+  margin: 8px 0;
+  outline: none;
+  padding: 0 15px;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  color: #333;
+  font-size: 14px;
+  font-weight: 400;
+}
+.input:is(:focus, :valid) {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.13);
+}
+.textarea {
+  margin: 8px 0;
+  outline: none;
+  padding: 0 15px;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  color: #333;
+  font-size: 14px;
+  font-weight: 400;
+}
+.textarea:is(:focus, :valid) {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.13);
+}
+
+@media (max-width: 550px) {
+  .check .check-box {
+    width: calc(100% / 3 - 15px);
+  }
+  .inside_home {
+    margin: 0 25px;
+  }
+  .form .input_box label {
+    margin: auto;
+  }
+  .form .input_box input {
+    width: 230px;
+    margin: auto;
+  }
+  .form .input_box textarea {
+    width: 230px;
+    margin: auto;
+  }
+  .check {
+    width: 220px;
+  }
+}
