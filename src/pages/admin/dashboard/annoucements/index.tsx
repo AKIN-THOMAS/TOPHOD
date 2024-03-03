@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import { adminToken } from "@/http/admin";
 
 
-const index = () => {
+const Index = () => {
 
   const router = useRouter();
   const checkToken = () => {
@@ -28,4 +28,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;

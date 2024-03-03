@@ -4,9 +4,11 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 
-const index = () => {
+const Index = () => {
   const router = useRouter();
   useEffect(() => {
+    const adminTok = localStorage.getItem("adminToken")
+    console.log("adminTok", adminTok)
     if (typeof window !== 'undefined') {
       const token = localStorage.getItem('adminToken');
       if (!token) {
@@ -24,4 +26,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;

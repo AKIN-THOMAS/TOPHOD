@@ -3,18 +3,17 @@ import Head from "next/head";
 import React, { useEffect } from "react";
 import Annoucement from "./../../../modules/dashboard/annoucements/Annoucement";
 import { useRouter } from "next/router";
-import { token } from "@/http";
+// import { token } from "@/http";
 
-const index: React.FC = () => {
+const Index: React.FC = () => {
   const router = useRouter();
-  const checkToken = () => {
-    if (!token) {
-      router.push("/auth");
-    }
-  };
-
   useEffect(() => {
-    checkToken();
+    if (typeof window !== 'undefined') {
+      const token = localStorage.getItem('userToken');
+      if (!token) {
+        router.push("/auth");
+      }
+    }
   }, []);
   return (
     <DashboardLayout>
@@ -26,4 +25,4 @@ const index: React.FC = () => {
   );
 };
 
-export default index;
+export default Index;

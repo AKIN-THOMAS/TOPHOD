@@ -179,7 +179,7 @@ const AdminLogin = () => {
               </div>
               <div className={styles.questions}>
                 <Link className={styles.question} href={""}>
-                  Don't have an account
+                  Don&apos;t have an account
                 </Link>
                 <Link className={styles.question} href={""}>
                   Forgot Password?

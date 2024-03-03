@@ -19,8 +19,9 @@ export const SignIn = async (username: string, password: string) => {
     });
 
     const responseData = await response.json();
-    token = responseData.data.token
-    console.log(`Token from index: ${token}`)
+    token = responseData?.data?.token;
+    localStorage.setItem('userToken', token)
+    console.log(`Token from index: ${token}`);
 
     return { response, responseData };
   } catch (error) {}
@@ -50,9 +51,8 @@ export const UserRegistration = async (
 };
 
 export const UserProfile = async () => {
-  // const { token } = useAuth();
-
   try {
+    const token = localStorage.getItem('userToken')
     const response = await fetch(`${apiUrl}/profile `, {
       method: "GET",
       headers: {
@@ -71,3 +71,20 @@ export const UserProfile = async () => {
   }
 };
 
+export const GetUserAtt = async () => {
+  try {
+    const token = localStorage.getItem('userToken')
+    const response = await fetch(`${apiUrl}/user/attendance?page=0&size=50`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const responseData = await response.json();
+    console.log(responseData);
+  } catch (error) {
+    console.error(`Error getting attendance: ${error}`);
+    throw error;
+  }
+};

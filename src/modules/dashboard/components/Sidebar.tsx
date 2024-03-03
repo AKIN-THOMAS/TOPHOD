@@ -3,8 +3,10 @@ import Link from "next/link";
 import Image from "next/image";
 import logo from "../../../../public/assets/logo.svg";
 import { ToggleSide } from "@/@types";
+import { useState } from "react";
 
 const Sidebar = ({ toggleSidebar }: ToggleSide) => {
+  const [active, setActive] = useState(false);
   return (
     <div className={toggleSidebar ? styles.sidebarHide : styles.sidebar}>
       <div className={styles.dashLogo}>
@@ -13,13 +15,13 @@ const Sidebar = ({ toggleSidebar }: ToggleSide) => {
         </Link>
       </div>
       <div className={styles.dashItems}>
-        <Link href={""}>
+        <a href={"/dashboard"}>
           <div className={styles.item}>
             <div>
               <p>Dashboard</p>
             </div>
           </div>
-        </Link>
+        </a>
         <Link href={""}>
           <div className={styles.item}>
             <div>
@@ -27,28 +29,28 @@ const Sidebar = ({ toggleSidebar }: ToggleSide) => {
             </div>
           </div>
         </Link>
-        <Link href={""}>
+        <a href={"/dashboard/annoucements"}>
           <div className={styles.item_hignlight}>
             <div>
               <p>Announcement</p>
             </div>
           </div>
-        </Link>
-        <Link href={""}>
+        </a>
+        <Link href={"/dashboard/att"}>
           <div className={styles.item}>
             <div>
               <p>Attendance</p>
             </div>
           </div>
         </Link>
-        <Link href={""}>
+        <Link href={"/dashboard/change"}>
           <div className={styles.item}>
             <div>
               <p>Change Password</p>
             </div>
           </div>
         </Link>
-        <Link href={""}>
+        <Link href={"/dashboard/update"}>
           <div className={styles.item}>
             <div>
               <p>Update Information</p>

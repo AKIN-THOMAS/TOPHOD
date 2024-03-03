@@ -109,3 +109,18 @@
   border-radius: 10px;
   margin-bottom: 50px;
 }
+
+.processing_btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #ce46a3 11.45%, #b9599a 11.45%);
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}

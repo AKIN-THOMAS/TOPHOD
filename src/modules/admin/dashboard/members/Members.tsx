@@ -76,7 +76,6 @@ const Members = () => {
       let data;
       if (parts || subUnit || level) {
         console.log("Entered parts, subunit, level");
-        // If there are filters, use filtered API
         console.log(`parts: ${parts}`);
         console.log(`level: ${level}`);
         console.log(`subUnit: ${subUnit}`);

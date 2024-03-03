@@ -21,7 +21,7 @@ const Dashboard: React.FC = () => {
   return (
     <DashboardLayout>
       <Head>
-        <title>Member's Dashboard</title>
+        <title>Member&apos;s Dashboard</title>
       </Head>
       <Main />
     </DashboardLayout>

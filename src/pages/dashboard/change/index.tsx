@@ -1,20 +1,19 @@
 import DashboardLayout from "@/components/Layout/DashboardLayout";
-import { token } from "@/http";
+// import { token } from "@/http";
 import ChangePassword from "@/modules/dashboard/change/ChangePassword";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 
-const index = () => {
+const Index = () => {
   const router = useRouter();
-  const checkToken = () => {
-    if (!token) {
-      router.push("/auth");
-    }
-  };
-
   useEffect(() => {
-    checkToken();
+    if (typeof window !== 'undefined') {
+      const token = localStorage.getItem('userToken');
+      if (!token) {
+        router.push("/auth");
+      }
+    }
   }, []);
   return (
     <DashboardLayout>
@@ -26,4 +25,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;

@@ -69,7 +69,7 @@ const AdminExcos = () => {
   ];
   const renderTableBody = executives.map((value, index) => {
     return (
-      <tbody className={styles.tbody}>
+      <tbody key={index} className={styles.tbody}>
         <tr>
           <td className={styles.td} key={index}>
             {value.Week}

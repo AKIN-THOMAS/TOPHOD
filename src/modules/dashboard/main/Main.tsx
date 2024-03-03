@@ -1,12 +1,23 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "@/styles/DashComp.module.css";
 import Link from "next/link";
 import { BsPersonCheck } from "react-icons/bs";
 import { GrAnnounce } from "react-icons/gr";
 import { IoMdFingerPrint } from "react-icons/io";
 import { LuMoveRight } from "react-icons/lu";
+import { GetUserAtt } from "@/http";
+import Attendance from "../att/Attendance";
 
 const Main = () => {
+  const [att, setAtt] = useState([]);
+
+  const getAttendance = async() => {
+    const attResponse = await GetUserAtt()
+    console.log(attResponse)
+  }
+  useEffect(() => {
+    getAttendance()
+  }, []);
   const attendance = [
     {
       Week: "02-12-05",
@@ -53,7 +64,7 @@ const Main = () => {
   ];
   const renderTableBody = attendance.map((value, index) => {
     return (
-      <tbody className={styles.tbody}>
+      <tbody key={index} className={styles.tbody}>
         <tr>
           <td className={styles.td} key={index}>
             {value.Week}
@@ -108,7 +119,8 @@ const Main = () => {
           </div>
         </div>
       </div>
-      <div className={styles.recent_grid}>
+      <Attendance />
+      {/* <div className={styles.recent_grid}>
         <div className={styles.attendance}>
           <div className={styles.inside_card}>
             <div className={styles.inside_header}>
@@ -135,7 +147,7 @@ const Main = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

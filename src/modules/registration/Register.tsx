@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "@/styles/Registration.module.css";
-import { title } from "@/@types";
+import { NewRegister, title } from "@/@types";
 import { UserRegistration } from "@/http";
 
 const Register = ({ reghead, type }: title) => {
@@ -32,21 +32,22 @@ const Register = ({ reghead, type }: title) => {
   ) => {
     event.preventDefault();
 
-    const data = {
+    const data: NewRegister = {
       firstname: firstname,
       middlename: middlename,
       lastname: lastname,
       gender: gender,
-      regno: regNo,
+      regNo: regNo,
       college: college,
       department: department,
       level: level,
       email: webmail,
-      phonenumber: phoneNumber,
-      roomno: roomNumber,
+      phoneNumber: phoneNumber,
+      roomNumber: roomNumber,
       dob: dob,
-      part: part,
-      subunit: subUnit,
+      igHandle: '',
+      // part: part,
+      // subunit: subUnit,
       type: type,
     };
 

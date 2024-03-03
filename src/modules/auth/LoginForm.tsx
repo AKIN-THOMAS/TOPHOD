@@ -1,5 +1,10 @@
 import React, { useState } from "react";
-import { Input, InputGroup, InputRightAddon } from "@chakra-ui/react";
+import {
+  CircularProgress,
+  Input,
+  InputGroup,
+  InputRightAddon,
+} from "@chakra-ui/react";
 import styles from "@/styles/Auth.module.css";
 import Link from "next/link";
 import { SignIn, token } from "@/http";
@@ -11,6 +16,7 @@ const LoginForm = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   const togglePassword = () => {
@@ -19,23 +25,23 @@ const LoginForm = () => {
 
   const handleSubmit2: React.FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
-   try {
-    const signIn = await SignIn(username, password);
-    // console.log(signIn?.response)
+    setLoading(true);
+    try {
+      const signIn = await SignIn(username, password);
+      // console.log(signIn?.response)
 
-    if(signIn?.responseData.status === 200) {
-      router.push('/dashboard');
+      if (signIn?.responseData.status === 200) {
+        router.push("/dashboard");
+      } else if (signIn?.responseData.status === 401) {
+        setError("Unauthorized access");
+        setLoading(false);
+      } else {
+        setError(`${signIn?.response.statusText}!! Are you choir?`);
+        setLoading(false);
+      }
+    } catch (error) {
+      setError("Error Logging in. Are you the admin?");
     }
-    else if (signIn?.responseData.status === 401) {
-      setError("Unauthorized access")
-    }
-    else {
-      setError(`${signIn?.response.statusText}!! Are you choir?`)
-    }
-   } catch (error) {
-    setError("Error Logging in. Are you the admin?")
-   }
-   
   };
 
   return (
@@ -81,15 +87,33 @@ const LoginForm = () => {
               </div>
               <div className={styles.questions}>
                 <Link className={styles.question} href={""}>
-                  Don't have an account
+                  Don&apos;t have an account
                 </Link>
                 <Link className={styles.question} href={""}>
                   Forgot Password?
                 </Link>
               </div>
-              <button className={styles.submit_btn} type="submit">
+              {/* <button className={styles.submit_btn} type="submit">
                 Login
-              </button>
+              </button> */}
+              {!loading ? (
+                <>
+                  <button disabled className={styles.processing_btn}>
+                    <CircularProgress
+                      isIndeterminate
+                      color="grey"
+                      size="20px"
+                    />
+                    <p>Processing...</p>
+                  </button>
+                </>
+              ) : (
+                <>
+                  <button type="submit" disabled className={styles.submit_btn}>
+                    Login
+                  </button>
+                </>
+              )}
             </div>
           </form>
         </div>
